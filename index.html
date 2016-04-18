@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="cache-control" content="no-cache">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ngSea.js"></script>
+    <link href="custom/custom.css" rel="stylesheet">
+    <script src="js/diyou.js"></script>
+    <script src="js/base.js"></script>
+</head>
+<body>
+<div id="index" ng-controller="indexController">
+    {{indexData}}{{customResult}}
+    <button ng-click="showCustom()">custom</button>
+</div>
+<div ng-controller="userController">
+    {{userData}}
+</div>
+<script type="text/javascript">
+    diyou.on('error', function (module) {
+        if (module.status != 5) {
+            console.error('diyou error: ', module);
+        }
+    });
+    diyou.use(['src/indexCtrl', 'src/userCtrl'],function(jquery){
+        angular.bootstrap(document, ['index','user']);
+    });
+</script>
+</body>
+</html>

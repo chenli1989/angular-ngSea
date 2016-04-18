@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="cache-control" content="no-cache">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ngSea.js"></script>
+    <script src="js/diyou.js"></script>
+    <script src="js/base.js"></script>
+</head>
+<body>
+<div ng-controller="userController">
+    {{userData}}
+</div>
+<script type="text/javascript">
+    diyou.on('error', function (module) {
+        if (module.status != 5) {
+            console.error('diyou error: ', module);
+        }
+    });
+    diyou.use(['src/userCtrl'],function(){
+        angular.bootstrap(document, ['user']);
+    });
+</script>
+</body>
+</html>
